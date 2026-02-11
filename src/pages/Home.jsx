@@ -5,7 +5,7 @@ function Home() {
   // ☆ make change daily rather than per reload ———> LATER NOT NOW (otherwise testing will be annoying)
   const wordful = WORDS.split('\n').filter(Boolean);
   const freakyNum = Math.floor(Math.random() * wordful.length);
-  const magicWord = wordful[freakyNum] || '';
+  const magicWord = wordful[freakyNum] || ''; // ☆ FIXME its getting rid of the spaces in phrases somewhere 
 
   return (
     <div className="home">
