@@ -1,46 +1,48 @@
+/* ✧ imports ✧ */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  --color-text: #272744;
-  --color-bg: #fbf5ef;
-  --color-surface: #c69fa5;
-  --color-muted: #494d7e;
+:root { /* ✧ variabled-up palette ✧ */
+  --cream: rgb(236, 222, 208);
+  --pink: #FFA5AB;
+  --rose: #DA627D;
+  --wine: #A53860;
+  --dark: #450920;
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --background: var(--cream);
+  --foreground: var(--dark);
+  --card: var(--cream);
+  --card-foreground: var(--dark);
+  --popover: var(--cream);
+  --popover-foreground: var(--dark);
+  --primary: var(--wine);
+  --primary-foreground: var(--cream);
+  --secondary: var(--pink);
+  --secondary-foreground: var(--dark);
+  --muted: var(--pink);
+  --muted-foreground: var(--wine);
+  --accent: var(--rose);
+  --accent-foreground: var(--cream);
+  --destructive: var(--rose);
+  --border: var(--rose);
+  --input: var(--pink);
+  --ring: var(--wine);
+  --chart-1: var(--rose);
+  --chart-2: var(--wine);
+  --chart-3: var(--dark);
+  --chart-4: var(--pink);
+  --chart-5: var(--cream);
+  --sidebar: var(--pink);
+  --sidebar-foreground: var(--dark);
+  --sidebar-primary: var(--wine);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--rose);
+  --sidebar-accent-foreground: var(--cream);
+  --sidebar-border: var(--rose);
+  --sidebar-ring: var(--wine);
 }
 
 * {
@@ -51,8 +53,8 @@
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
-  color: var(--color-text);
-  background: var(--color-bg);
+  color: var(--foreground);
+  background: var(--background);
 }
 
 nav {
@@ -60,14 +62,14 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 2vh 4vh;
-  background: var(--color-surface);
-  border-bottom: 0.1vh solid var(--color-text);
+  background: var(--secondary);
+  border-bottom: 0.1vh solid var(--foreground);
   font-size: 3vh;
 }
 
 .nav-links a {
   margin-right: 1.5vh;
-  color: var(--color-text);
+  color: var(--foreground);
   text-decoration: none;
 }
 
@@ -94,53 +96,98 @@ main {
   padding: 4vh 3vh;
 }
 
-/* Home page */
+/* ✧ home page css ✧ */
 .home .intro {
+  text-align: center;
+  padding: 6vh 2vh;
+}
+
+.home .intro h1 {
+  font-size: 5vh;
+  margin-bottom: 3vh;
+  font-weight: 600;
+  color: var(--wine);
+  text-transform: lowercase;
+}
+
+.home .magic-word { /* ✧ word of day ✧ */
+  display: inline-block;
+  font-size: 12vh;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.home .magic-word-char {   /* per character of word of day */
+  display: inline-block;
+  background: linear-gradient(135deg, var(--wine) 20%, var(--rose) 50%, var(--dark) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  opacity: 0;
+  animation: splice-in 0.4s ease forwards;
+}
+
+@keyframes splice-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✧ about page css ✧ */
+.about .intro {
   text-align: center;
   padding: 3vh 1vh;
 }
 
-.home .intro h1 {
+.about .intro h1 {
   font-size: 15vh;
   margin-bottom: 1vh;
   font-weight: 700;
-  background: linear-gradient(45deg, var(--color-surface) 5%, var(--color-text));
+  background: linear-gradient(45deg, var(--rose) 20%, var(--wine) 60%, var(--dark) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-.home .intro p {
+.about .intro p {
   font-size: 5vh;
-  color: var(--color-surface);
+  color: var(--wine);
 }
 
-.home .features {
+/* ✧ features = the little cards in the about page ✧ */
+
+.about .features {
   margin: 5vh 10vh;
   font-size: 5vh;
 }
 
-.home .features h2 {
+.about .features h2 {
   margin-bottom: 1.5vh;
   font-size: 5vh;
 }
 
-.home .feature-grid {
+.about .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 2vh;
 }
 
-.home .feature-card {
+.about .feature-card {
   padding: 5vh 3vh;
-  background: var(--color-surface);
+  background: var(--pink);
   border-radius: 8px;
   text-align: center;
 }
 
-.home .feature-card:hover {
-  background: var(--color-surface);
+.about .feature-card:hover {
+  background: var(--rose);
 }
 
 @theme inline {
@@ -185,37 +232,37 @@ main {
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: var(--dark);
+  --foreground: var(--cream);
+  --card: var(--wine);
+  --card-foreground: var(--cream);
+  --popover: var(--wine);
+  --popover-foreground: var(--cream);
+  --primary: var(--rose);
+  --primary-foreground: var(--cream);
+  --secondary: var(--wine);
+  --secondary-foreground: var(--cream);
+  --muted: var(--wine);
+  --muted-foreground: var(--pink);
+  --accent: var(--rose);
+  --accent-foreground: var(--cream);
+  --destructive: var(--rose);
+  --border: var(--wine);
+  --input: var(--wine);
+  --ring: var(--rose);
+  --chart-1: var(--rose);
+  --chart-2: var(--wine);
+  --chart-3: var(--pink);
+  --chart-4: var(--cream);
+  --chart-5: var(--dark);
+  --sidebar: var(--wine);
+  --sidebar-foreground: var(--cream);
+  --sidebar-primary: var(--rose);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--wine);
+  --sidebar-accent-foreground: var(--cream);
+  --sidebar-border: var(--wine);
+  --sidebar-ring: var(--rose);
 }
 
 @layer base {

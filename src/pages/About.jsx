@@ -1,9 +1,20 @@
 function About() {
   return (
-    <div>
-      <h1>about</h1>
-      <p>brought to you by ofknee & shyla</p>
-    </div>
+    <div className="about">
+    <section className="intro">
+      <h1>Noia</h1>
+      <p>your personal study app!</p>
+    </section>
+
+    <section className="features">
+      <h2>why Noia?</h2>
+      <div className="feature-grid">
+        <div className="feature-card">inspirational</div>
+        <div className="feature-card">enriching</div>
+        <div className="feature-card">productivity</div>
+      </div>
+    </section>
+  </div>
   )
 }
 
