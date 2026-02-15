@@ -146,7 +146,8 @@ main {
   padding: 3vh 1vh;
 }
 
-.about .intro h1 {
+.about .intro h1, 
+.home .intro h1 {
   font-size: 15vh;
   margin-bottom: 1vh;
   font-weight: 700;

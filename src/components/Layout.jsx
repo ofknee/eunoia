@@ -7,11 +7,12 @@ function Layout() {
       <nav>
         <div className="nav-links">
           <Link to="/">home</Link>
-          <Link to="/about">about</Link>       {/* ✧ navigation / top bar ✧ */}
+          <Link to="/about">about</Link>        {/* ✧ navigation / top bar ✧ */}
           <Link to="/contact">contact</Link>
+          <Link to="/wotd">wotd</Link>
         </div>
         <button className="nav-icon-btn" aria-label="Sun">
-          <img src={sunIcon} alt="" />         {/* ✧ brightness button ✧ */}
+          <img src={sunIcon} alt="" />          {/* ✧ brightness button ✧ */}
         </button>
       </nav>
       <main>
