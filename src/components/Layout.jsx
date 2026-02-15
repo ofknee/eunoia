@@ -8,7 +8,7 @@ function Layout() {
         <div className="nav-links">
           <Link to="/">home</Link>
           <Link to="/about">about</Link>        {/* ✧ navigation / top bar ✧ */}
-          <Link to="/contact">contact</Link>
+          {/* <Link to="/contact">contact</Link> */}
           <Link to="/wotd">wotd</Link>
         </div>
         <button className="nav-icon-btn" aria-label="Sun">

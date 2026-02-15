@@ -15,7 +15,7 @@ function Wotd() {
   const [definition, setDefinition] = useState(''); 
 
   useEffect(() => {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(magicWord)}`)
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${magicWord}`)
       .then((r) => r.json()) 
       .then((d) => setDefinition(d?.[0]?.meanings?.[0]?.definitions?.[0]?.definition || 'no definition found'))
       .catch(() => setDefinition('failed to load definition')); 
@@ -26,7 +26,7 @@ function Wotd() {
     <div className="home">
       <section className="intro">
         <h1>word of the day</h1>
-        <p className="magic-word" aria-label={magicWord}>
+        <p className="magic-word">
           {magicWord.split('').map((char, i) => (                           // animation for word on load (twin did u see the 67 hehe)
             <span key={i} className="magic-word-char" style={{ animationDelay: `${i * 0.0267}s` }}> 
               {
