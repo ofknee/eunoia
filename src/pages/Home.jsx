@@ -8,9 +8,9 @@ function Home() {
         <h1>Get inpsired today!</h1>
         <h2>A webapp for the creatives, intellectuals, homework-romanticizers, Notion users, NYT players, and my fellow 'procrastiworkers' {'\u003C'}3</h2>
         <br/>
-        <p>did you know?</p>
+        <h2>did you know?</h2>
         <p>an apple a day keeps the doctor away...</p> 
-        <p>noia a day keeps your grades an A!</p>
+        <p>but Noia a day keeps your grades an A!</p>
       </section>
     </div>
   );

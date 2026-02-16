@@ -19,8 +19,8 @@ function Layout() {
         <Outlet />
       </main>
       <footer>                                {/* ✧ footer ✧ */}
-      Noia — brought to you by ofknee & shyla  <br/>
-      ¡™£¢∞§¶•ªº–±——‚·°‡ﬂﬁ›‹€ FOOTER (to be customized/cssed later)
+      Noia — bringing you a new curated word each day!  <br/>
+      quick side note: these words are from my personal collection of words i find fun, inspiring, or euphonius. they are not vocab words. i hope you enjoy my picks!{/* to be customized/cssed later */}
       </footer>
     </div>
   )

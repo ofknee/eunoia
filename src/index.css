@@ -99,7 +99,6 @@ main {
 
 /* ✧ footer css ✧ */
 footer {
-  margin-top: 8vh;
   padding: 3.5vh 4vh;
   display: flex;
   flex-direction: column;
@@ -108,15 +107,15 @@ footer {
   text-align: center;
   font-size: 1.65vh;
   font-weight: 500;
-  line-height: 1.55;
+  line-height: 1.5;
   letter-spacing: 0.04vh;
   background: var(--lightest);
 }
 
 footer::before {
   content: "";
-  width: 8vh;
-  height: 0.35vh;
+  width: 5vh;
+  height: 0.3vh;
   border-radius: 999vh;
   background: color-mix(in srgb, var(--medium) 65%, var(--light) 35%);
 }

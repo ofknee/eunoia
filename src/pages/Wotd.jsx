@@ -1,20 +1,49 @@
 import { useEffect, useState } from 'react';
 import useCountdown from '../lib/useCountdown'; // code to get countdown in this src/lib/
-import WORDS from '../words.txt?raw';
+import getWotd from '../utils/getWotd.js';
+
 
 // ✧ get random word from textfile of words :P
 // ☆ TODO make change daily rather than per reload ———> LATER NOT NOW (otherwise testing will be annoying)
 // fyi the countdown rerenders Home() every second soooo keeping this code outside of Home()
-const wordful = WORDS.split('\n').filter(Boolean);
-const freakyNum = Math.floor(Math.random() * wordful.length);
-const magicWord = wordful[freakyNum] || ''; // ★ FIXME its getting rid of the spaces in phrases somewhere (ie quidproquo & fauxpas)
+
+// const wordful = WORDS.split('\n').filter(Boolean);
+// const freakyNum = Math.floor(Math.random() * wordful.length);
+// const magicWord = wordful[freakyNum] || ''; // ★ FIXME its getting rid of the spaces in phrases somewhere (ie quidproquo & fauxpas)
+
 
 function Wotd() {
   const { hours, minutes, seconds } = useCountdown(); // from imported file
-  
-  const [definition, setDefinition] = useState(''); 
+
+  const [magicWord, setMagicWord] = useState('');
+  const [definition, setDefinition] = useState('');
 
   useEffect(() => {
+    const loadWotd = async () => {
+      try {
+        const data = await getWotd();
+
+        if (!data || !data.word) {
+          setMagicWord('no word found');
+          setDefinition('no definition found');
+          return;
+        }
+
+        setMagicWord(data.word);
+        // setDefinition(data.definition || 'no definition found');
+        return;
+      } catch (error) {
+        console.error('failed to load word of the day:', error);
+        setMagicWord('error');
+        setDefinition('failed to load definition');
+        return;
+      }
+    };
+
+    loadWotd();
+  }, []);
+
+   useEffect(() => {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${magicWord}`)
       .then((r) => r.json()) 
       .then((d) => setDefinition(d?.[0]?.meanings?.[0]?.definitions?.[0]?.definition || 'no definition found'))
