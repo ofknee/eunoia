@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import useCountdown from '../lib/useCountdown'; // code to get countdown in this src/lib/
 import getWotd from '../utils/getWotd.js';
 
+const dictKey = import.meta.env.VITE_DICT_KEY;
+
+
 
 // ✧ get random word from textfile of words :P
 // ☆ TODO make change daily rather than per reload ———> LATER NOT NOW (otherwise testing will be annoying)
@@ -30,8 +33,9 @@ function Wotd() {
         }
 
         setMagicWord(data.word);
-        // setDefinition(data.definition || 'no definition found');
+        setDefinition(data.definition || 'loading...'); //temporary
         return;
+      
       } catch (error) {
         console.error('failed to load word of the day:', error);
         setMagicWord('error');
@@ -43,12 +47,54 @@ function Wotd() {
     loadWotd();
   }, []);
 
-   useEffect(() => {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${magicWord}`)
-      .then((r) => r.json()) 
-      .then((d) => setDefinition(d?.[0]?.meanings?.[0]?.definitions?.[0]?.definition || 'no definition found'))
-      .catch(() => setDefinition('failed to load definition')); 
-  }, [magicWord]); 
+  useEffect(() => {
+    let cancelled = false;
+
+    // if (!dictKey) {
+    //   setDefinition('missing dictionary key');
+    //   return;
+    // }
+
+    fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${magicWord}?key=${dictKey}`)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error(`dictionary request failed: ${response.status}`);      // ✧ error-prevention
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        if (cancelled) return;
+
+        if (!Array.isArray(data) || data.length === 0 || typeof data[0] === 'string') {
+          setDefinition('no definition found');
+          return;
+        }
+
+        const definitions = data
+          .filter(function (entry) {
+            return entry && typeof entry === 'object' && Array.isArray(entry.shortdef);
+          })
+          .flatMap(function (entry) {
+            return entry.shortdef;
+          })
+          .filter(Boolean)
+          .slice(0, 4);
+
+        setDefinition(definitions.length ? definitions.join('\n✦ ') : 'no definition found');
+      })
+      .catch(function (error) {
+        if (cancelled) return;
+        console.error('dictionary fetch failed:', error);
+        setDefinition(function (prev) {
+          return prev || 'failed to load definition';
+        });
+      });
+
+    return function () {
+      cancelled = true;
+    };
+  }, [magicWord]);
+
 
   // ✧ main page stuff
   return (
@@ -66,8 +112,8 @@ function Wotd() {
         </p>
       </section> 
       <section className="definition">
-        <h2>definition</h2>
-        <p>{definition}</p> 
+        <h2>definition ✰</h2>
+        <p>✦ {definition}</p> 
         
       </section>
       <p className="wotd-countdown">{`next word in ${hours} hours, ${minutes} minutes, and ${seconds} seconds`} </p> {/* ☆ TODO prettify countdown */}

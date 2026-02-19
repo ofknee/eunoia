@@ -228,6 +228,7 @@ footer::before {
 .home .definition p {
   font-size: clamp(1.8vh, 2.2vh, 2.4vh);
   line-height: 1.75;
+  white-space: pre-line;
   color: var(--darkest);
 }
 
