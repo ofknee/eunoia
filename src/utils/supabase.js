@@ -1,6 +1,6 @@
-// ✧ supabase fetch helper so the app can find words by date
-const supabaseUrl = import.meta.env.SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY;
+// ✧ tiny supabase fetch helper so the app can query words by date
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 function assertSupabaseEnv() {
   if (!supabaseUrl || !supabaseAnonKey) {
