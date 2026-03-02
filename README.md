@@ -3,7 +3,7 @@
 > Eunoia (pronounced yoo-noy-uh) is a Greek term meaning "beautiful thinking" or a "well-balanced mind," representing a state of pure, positive, and rational thought.
 
 ## inpsiring your intellect!
-get a curated word of the day from my collection! boop 👻 
+get a curated word of the day from my collection! boop 👻  
 (i collect words that i like, so if you have any interesting words you know of and you have my contact, pls send!!!!)
 <!-- with a word of the day, quote/prompt/theme generators, study locations, and more! <br><br> boop 👻  -->
 
@@ -18,11 +18,11 @@ get a curated word of the day from my collection! boop 👻
 - using env variables
 - using api keys (merriam-webster dictionary)
 - using databases (supabase specifically)
-- someone save me pls 💔🕊️
+- > someone save me pls 💔🕊️
 
 ### struggles
-trying to deploy without leaking env variables
-(someone save me pls x2)
+trying to deploy without leaking env variables  
+> (someone save me pls x2)
 
 
 ## ✧ get inspired today — try noia! ✧
