@@ -1,4 +1,4 @@
-# Noia (aka eunoia) 🧠
+# Noia (aka eunoia) ✦✦✦
 > [!NOTE]
 > Eunoia (pronounced yoo-noy-uh) is a Greek term meaning "beautiful thinking" or a "well-balanced mind," representing a state of pure, positive, and rational thought.
 
@@ -22,7 +22,7 @@ get a curated word of the day from my collection! boop 👻
 
 ### struggles
 trying to deploy without leaking env variables
-(someone save me pls)
+(someone save me pls x2)
 
 
 ## ✧ get inspired today — try noia! ✧
